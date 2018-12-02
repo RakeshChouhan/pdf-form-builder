@@ -1,0 +1,120 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PDF form builder</title>
+    <link rel="stylesheet" href="src/jquery-ui.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="src/jquery-ui.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>   
+    <script src="node_modules/konva/konva.js"></script>
+    <script src="src/util.js"></script>
+    
+    <script src="src/components.js"></script>
+
+    <script src="src/index.js"></script>
+    <script src="src/jspdf.min.js"></script>
+    <style>
+        #propContainer{
+            border-left:1px solid #ccc;
+        }
+        #propContainer td {
+            font-size:14px;
+        }
+        #drawcanvas canvas{
+            border:1px solid black;
+        }
+        
+        #drawingContainer{
+            height:500px;
+            width:800px;
+            border: 1px solid #CCC;
+            overflow-y:scroll;
+        }
+    </style>
+    
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+                <div class="jumbotron">
+                        <h2>PDF Form builder</h2>
+                        <div class="row" style="float:right">
+                                <select id="selecttemplate">
+                                    <option selected="selected">--Select template--</option>
+                                </select>
+                                <button class="btn btn-outline-success" id="btnLoad">Load Template</button>
+                            
+                        </div>
+                </div>
+                
+               
+        </div>
+            
+    </div>
+    <div class="row" id="container" >
+        <div class="col-lg-2">
+                <div class="panel panel-default">
+                        <div class="panel-heading"><h5>Components</h5></div>
+                        <div class="panel-body">
+                                <ul class="list-group">
+                                        <li class="list-group-item" id="labelField" draggable="true" ondragstart="drag(event)">Label</li>
+                                        <li class="list-group-item" id="rect" draggable="true">Rectangle</li>
+                                        <li class="list-group-item" id="lineField" draggable="true">Line</li>
+                                        <li class="list-group-item" id="multitextfield" draggable="true">MultiTextfield</li>
+                                        <li class="list-group-item" id="dateField" draggable="true">Date</li>
+                                    </ul>
+                        </div>
+                       
+                      </div>
+        </div>
+        <div class="col-lg-7">
+                <div class="">
+                        <div class="col-lg-12">
+                                <button class="btn btn-outline-success" id="btnSave" title="It will store in localstorage">Save</button>
+                                <button class="btn btn-outline-success" id="btnClear">Clear</button>
+                                <button class="btn btn-outline-success" id="btnDownload">Download PDF</button>
+                        </div>
+                    </div>
+            <label for="hideGrid" style="float:right"> <input type="checkbox" name="hideGrid" id="hideGrid" class="pull-right" checked=true> <span id="toggleGrid">Hide Grid</span> </label>
+            <div id="drawingContainer">
+                    <div id="drawcanvas" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    </div>
+            </div>
+            <br/>
+           
+            
+        </div>
+        <div class="col-lg-3">
+                <div id="accordion">
+                        <div class="panel panel-default">
+                                <div class="panel-heading"><h5>Properties</h5><hr/></div>
+                                <div class="panel-body" id="propertyContainer">
+                                       
+                                       <div id="propContainer"></div>
+                                </div>
+                                <div class="panel-footer">
+                                    &nbsp;
+        
+                                </div>
+                              </div>
+
+                              
+                    </div>
+                
+                    
+                      
+
+        </div>
+        
+
+    </div>
+    
+</body>
+</html>
